@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  height: 100%;
+  background: rgb(218,37,37);
+  background: linear-gradient(180deg, rgba(218,37,37,1) 0%, rgba(48,111,237,1) 40%);
+}
+
+* {
+  font-family: "Open Sans";
+}

@@ -1,0 +1,45 @@
+.container {
+  background: white;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 7px 4px rgba(0, 0, 0, 0.4);
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 40px;
+}
+
+.text {
+  align-self: center;
+  font-size: 3em;
+  word-wrap: normal;
+  font-weight: bold;
+}
+
+.logo-and-number {
+  position: relative;
+}
+
+
+.mario-logo {
+  opacity: 60%;
+}
+
+.number-of-marios {
+
+  position: absolute;
+  top: -55px;
+  right: 15px;
+
+  color: #debf0c;
+  letter-spacing: 20px;
+  font-weight: bold;
+  font-size: 6em;
+  -webkit-text-stroke-width: 0.05em;
+  -webkit-text-stroke-color: black;
+}

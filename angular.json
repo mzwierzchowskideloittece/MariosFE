@@ -71,7 +71,8 @@
               "browserTarget": "Mariosy_FE:build:production"
             },
             "development": {
-              "browserTarget": "Mariosy_FE:build:development"
+              "browserTarget": "Mariosy_FE:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
