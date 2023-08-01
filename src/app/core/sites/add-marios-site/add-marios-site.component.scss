@@ -1,58 +1,35 @@
 .container {
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 100%;
 }
 
+
 .content {
-  width: 70%;
+  background: white;
   height: 100%;
+  width: 70%;
   display: flex;
   flex-direction: column;
 }
-
-.marios-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  height: 20%;
-  max-height: 1%;
-  margin-top: 3em;
-  margin-bottom: 3em;
-}
-
-.space {
-  width: 5%;
-  height: 100%;
-}
-
-.marios-button {
-  width: 47.5%;
-  height: 100%;
-  max-width: 600px;
-}
-
-.mdc-button--raised {
-  padding: 0;
-}
-
 
 
 .add-marios-button-component {
   background: #FFDF24 !important;
   border: 3px  solid white !important;
-  align-self: end;
+  align-self: start;
   height: min(3vw, 4em);
+  margin-bottom: 5em;
 }
 
 .add-marios-button-content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   margin: min(0.5vw, 0.4em);
+  margin-left: 0;
   width: 100%;
 }
 
@@ -71,22 +48,27 @@
 
 
 
+.form-container {
 
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 
-
-.last-marios-text {
-  color: white;
-  font-weight: bold;
-  letter-spacing: 0.2em;
-  font-size: 1.5vmax;
-  margin-bottom: 0.5em;
-}
-
-.marios-grid {
+  height: 300px;
   width: 100%;
-  height: 10%;
-  margin-bottom: 3em;
+
 }
 
 
 
+.form {
+  width: 100%;
+  height: 300px;
+}
+
+
+
+.chip-list {
+  width: 100%;
+}

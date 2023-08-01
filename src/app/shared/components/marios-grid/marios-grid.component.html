@@ -1,10 +1,40 @@
-<mat-grid-list class="grip-custom" cols="4" rowHeight="100px">
-  <mat-grid-tile
+<mat-grid-list class="grip-custom" cols="3" rowHeight="11vmax" [gutterSize]="'2vw'">
+  <mat-grid-tile class="grid-tile"
     *ngFor="let tile of tiles"
-    [colspan]="tile.cols"
-    [rowspan]="tile.rows"
-    [style.background]="tile.color">
-    {{tile.text}}
-    sdfgh
+    [colspan]="1"
+    [rowspan]="1">
+    <button class="container" mat-raised-button>
+
+      <div class="hover-overlay">
+        <div class="hover-background"></div>
+        <p class="hover-text">READ MORE</p>
+      </div>
+
+      <div class="name-and-sent-or-received">
+
+        <mat-icon class="person-icon">person</mat-icon>
+        <p class="sent-or-received">From:</p>
+        <span class="space-between-sent-or-received-and-name"></span>
+        <p class="name">Angela Marcus</p>
+      </div>
+
+      <div class="marios-type">
+        <mat-icon class="star-icon" color="blue">star</mat-icon>
+        <p class="type-text">Thank you</p>
+      </div>
+
+      <div class="marios-title">
+        <p style="width: 10%">T: </p>
+        <p>You did great today Monica!</p>
+      </div>
+
+      <div class="marios-comment">
+        <p>
+          I wanted to give you marios for your excellent team leadership...
+          <span style="color: black; font-weight: bold">See more</span>
+        </p>
+      </div>
+
+    </button>
   </mat-grid-tile>
 </mat-grid-list>

@@ -4,21 +4,30 @@
 
     <div class="marios-buttons">
 
-      <div class="received-marios">
+      <div class="marios-button">
         <app-button-to-sent-and-received-marios></app-button-to-sent-and-received-marios>
       </div>
 
-      <div class="space"><span></span></div>
+      <div class="space"></div>
 
-      <div class="sent-marios">
+      <div class="marios-button">
         <app-button-to-sent-and-received-marios></app-button-to-sent-and-received-marios>
       </div>
 
     </div>
 
-    <div class="add-marios-button">
-      <button type="button">ADD MARIOS</button>
-    </div>
+
+
+    <button class="add-marios-button-component" mat-raised-button>
+      <div class="add-marios-button-content">
+        <p class="add-marios-button-text"> ADD MARIOS</p>
+        <mat-icon class="add-marios-icon">navigate_next</mat-icon>
+      </div>
+    </button>
+
+
+
+    <p class="last-marios-text">LAST MARIOS:</p>
 
     <div class="marios-grid">
       <app-marios-grid></app-marios-grid>

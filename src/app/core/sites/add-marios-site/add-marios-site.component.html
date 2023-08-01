@@ -1,0 +1,41 @@
+<div class="container">
+
+  <div class="content">
+
+    <button class="add-marios-button-component" mat-raised-button>
+      <div class="add-marios-button-content">
+        <mat-icon class="add-marios-icon">navigate_before</mat-icon>
+        <p class="add-marios-button-text">BACK</p>
+      </div>
+    </button>
+
+    <div class="form-container">
+
+        <form>
+          <mat-form-field >
+            <mat-label>Receivers</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Selected receivers">
+              <mat-chip-row *ngFor="let person of selectedPeople" (removed)="remove(person)">
+                {{person}}
+                <button matChipRemove [attr.aria-label]="'remove ' + person">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+            <input placeholder="Who do you want to recognize?" #personInput [formControl]="personCtrl"
+                   [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   (matChipInputTokenEnd)="add($event)"/>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let person of filteredPeople | async" [value]="person">
+                {{person}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+
+    </div>
+
+  </div>
+
+</div>
