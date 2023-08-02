@@ -2,7 +2,7 @@
 
   <div class="content">
 
-    <button class="add-marios-button-component" mat-raised-button>
+    <button class="add-marios-button-component" mat-raised-button [routerLink]="'/'">
       <div class="add-marios-button-content">
         <mat-icon class="add-marios-icon">navigate_before</mat-icon>
         <p class="add-marios-button-text">BACK</p>
@@ -11,27 +11,69 @@
 
     <div class="form-container">
 
-        <form>
-          <mat-form-field >
-            <mat-label>Receivers</mat-label>
-            <mat-chip-grid #chipGrid aria-label="Selected receivers">
-              <mat-chip-row *ngFor="let person of selectedPeople" (removed)="remove(person)">
-                {{person}}
-                <button matChipRemove [attr.aria-label]="'remove ' + person">
-                  <mat-icon>cancel</mat-icon>
-                </button>
-              </mat-chip-row>
-            </mat-chip-grid>
-            <input placeholder="Who do you want to recognize?" #personInput [formControl]="personCtrl"
-                   [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
-                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                   (matChipInputTokenEnd)="add($event)"/>
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-              <mat-option *ngFor="let person of filteredPeople | async" [value]="person">
-                {{person}}
-              </mat-option>
-            </mat-autocomplete>
+        <form class="form">
+          <div class="receivers">
+
+            <mat-icon class="person-icon">person</mat-icon>
+
+            <mat-form-field class="chip-list">
+              <mat-label>Receivers</mat-label>
+              <mat-chip-grid #chipGrid aria-label="Selected receivers">
+                <mat-chip-row *ngFor="let person of selectedPeople" (removed)="remove(person)">
+                  {{person}}
+                  <button matChipRemove [attr.aria-label]="'remove ' + person">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              </mat-chip-grid>
+              <input placeholder="Who do you want to recognize?" #personInput [formControl]="personCtrl"
+                     [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     (matChipInputTokenEnd)="add($event)"/>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let person of filteredPeople | async" [value]="person">
+                  {{person}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <span class="yellow-line"></span>
+
+
+          <p>Select category:</p>
+          <mat-chip-listbox aria-label="Marios type selection" class="marios-type-chips">
+            <mat-chip-option *ngFor="let chip of mariosTypes">
+              <mat-icon class="add-marios-icon">navigate_before</mat-icon>
+              {{chip}}
+            </mat-chip-option>
+          </mat-chip-listbox>
+
+          <span class="yellow-line"></span>
+
+          <p>Title:</p>
+
+          <mat-form-field class="title-form-field" appearance="outline">
+
+            <input matInput placeholder="Enter marios title">
           </mat-form-field>
+
+          <span class="yellow-line"></span>
+
+          <p>Comment:</p>
+
+          <mat-form-field class="comment-form-field" appearance="outline">
+            <textarea matInput #input maxlength="255"></textarea>
+            <mat-hint align="end">{{input.value.length}}/255</mat-hint>
+          </mat-form-field>
+
+          <div class="send-button-container">
+            <button type="submit" mat-raised-button class="send-button-component">
+              <p class="send-button-text">SEND</p>
+            </button>
+
+          </div>
+
         </form>
 
     </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-button-to-sent-and-received-marios',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./button-to-sent-and-received-marios.component.scss']
 })
 export class ButtonToSentAndReceivedMariosComponent {
+
+  @Input()
+  link: string = "";
 
 }

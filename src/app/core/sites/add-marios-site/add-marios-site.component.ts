@@ -40,7 +40,7 @@ export class AddMariosSiteComponent {
     }
 
     // Clear the input value
-    event.chipInput!.clear();
+    event.chipInput.clear();
 
     this.personCtrl.setValue(null);
   }
@@ -66,4 +66,16 @@ export class AddMariosSiteComponent {
 
     return this.allPeople.filter(person => person.toLowerCase().includes(filterValue));
   }
+
+
+
+
+  mariosTypes: String[] = [
+    'hello',
+    'hello',
+    'hello',
+    'hello',
+  ];
+
+
 }

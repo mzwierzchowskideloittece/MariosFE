@@ -1,3 +1,6 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
 body {
   margin: 0;
   background: linear-gradient(180deg, rgba(218, 37, 37, 1) 5em, rgba(48, 111, 237, 1) 15em) no-repeat;
@@ -12,9 +15,29 @@ html {
 }
 
 .mdc-button__label {
-  width: 100%;
 
   padding: 0;
   height: 100%;
   width: 100%;
 }
+
+.mat-mdc-form-field-subscript-wrapper {
+
+  height: 0;
+
+}
+
+.mdc-line-ripple {
+
+  display: none;
+
+}
+
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+
+  background-color: white;
+
+}
+
+
