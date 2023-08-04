@@ -12,7 +12,8 @@
 
       <div class="name-and-sent-or-received">
         <mat-icon class="person-icon">person</mat-icon>
-        <p class="sent-or-received">{{data.sentOrReceived}}</p>
+        <p class="sent-or-received" *ngIf="data.sentOrReceived == 'sent'">To:</p>
+        <p class="sent-or-received" *ngIf="data.sentOrReceived == 'received'">From:</p>
         <span class="space-between-sent-or-received-and-name"></span>
         <p class="name">{{data.name}}</p>
       </div>
