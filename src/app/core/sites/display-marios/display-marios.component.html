@@ -1,1 +1,22 @@
-<app-marios-grid></app-marios-grid>
+<div class="container">
+
+  <div class="content">
+
+
+    <button class="back-button-component" mat-raised-button [routerLink]="'/'">
+      <div class="back-button-content">
+        <mat-icon class="back-icon">navigate_before</mat-icon>
+        <p class="back-button-text">BACK</p>
+      </div>
+    </button>
+
+
+    <p class="last-marios-text">{{label}}</p>
+
+    <div class="marios-grid">
+      <app-marios-grid [mariosList]="mariosList"></app-marios-grid>
+    </div>
+
+  </div>
+
+</div>

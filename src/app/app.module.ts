@@ -20,6 +20,9 @@ import { MatInputModule } from "@angular/material/input";
 import { DisplayMariosComponent } from './core/sites/display-marios/display-marios.component';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { PopUpMariosComponent } from './shared/components/pop-up-marios/pop-up-marios.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HomeSiteComponent,
     ButtonToSentAndReceivedMariosComponent,
     AddMariosSiteComponent,
-    DisplayMariosComponent
+    DisplayMariosComponent,
+    PopUpMariosComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     AsyncPipe,
     FormsModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

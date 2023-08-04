@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
+import { PopUpMariosComponent } from "../pop-up-marios/pop-up-marios.component";
+import { MariosService } from "../../../core/services/marios-service/marios.service";
+import {Marios} from "../../../core/interfaces/marios-interface/marios";
 
 @Component({
   selector: 'app-marios-grid',
@@ -6,12 +10,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./marios-grid.component.scss']
 })
 export class MariosGridComponent {
-  tiles = [
-    {text: 'One'},
-    {text: 'Two'},
-    {text: 'Three'},
-    {text: 'Four'},
-    {text: 'Four'}
 
-  ];
+  @Input()
+  public mariosList: Marios[]=[];
+
+
+  constructor(public dialog: MatDialog, public mariosService: MariosService) {}
+
+
+  popUpMarios(tile: Marios) {
+    this.dialog.open(PopUpMariosComponent,{
+      data: {
+        sentOrReceived: tile.sentOrReceived,
+        name: tile.firstAndLastNameOfSender,
+        type: tile.type,
+        title: tile.title,
+        comment: tile.comment
+      }});
+  }
+
 }

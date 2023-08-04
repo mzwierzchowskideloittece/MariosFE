@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MariosService } from "../../services/marios-service/marios.service";
+import {Marios} from "../../interfaces/marios-interface/marios";
 
 @Component({
   selector: 'app-home-site',
@@ -6,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-site.component.scss']
 })
 export class HomeSiteComponent {
+
+  public mariosList: Marios[] = [];
+
+  constructor(private mariosService: MariosService) {}
+
+
+  ngOnInit() {
+
+    this.mariosService.getLatestMarios().subscribe( sentMarios => {
+
+      if (sentMarios != undefined) {
+        this.mariosList = sentMarios as Marios[];
+      }
+      console.log(this.mariosList);
+    });
+
+  }
 
 }

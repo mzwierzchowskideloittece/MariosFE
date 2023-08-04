@@ -1,3 +1,64 @@
-.example-chip-list {
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+.back-button-component {
+  background: #FFDF24 !important;
+  border: 3px  solid white !important;
+  align-self: start;
+  height: min(3vw, 4em);
+  margin-bottom: 3em;
+}
+
+.back-button-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: min(0.5vw, 0.4em);
+  margin-left: 0;
   width: 100%;
 }
+
+.back-button-text {
+  margin: 0;
+  font-weight: bold;
+  font-size: min(1.3vw, 2em);
+}
+
+.back-icon {
+  font-size: min(1.8vw, 3em);
+  width: 20%;
+  height: 100%;
+}
+
+
+
+
+.last-marios-text {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  font-size: 1.5vmax;
+  margin-bottom: 0.5em;
+}
+
+.marios-grid {
+  width: 100%;
+  height: 10%;
+  margin-bottom: 3em;
+}
+

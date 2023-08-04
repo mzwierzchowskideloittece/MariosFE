@@ -8,6 +8,18 @@ import {Component, Input} from '@angular/core';
 export class ButtonToSentAndReceivedMariosComponent {
 
   @Input()
-  link: string = "";
+  public link: string = "";
 
+  public buttonLabel:string = "";
+
+  ngOnInit() {
+
+    if(this.link == "/sent") {
+    this.buttonLabel = "SENT MARIOS:";
+    } else {
+      if(this.link == "/received") {
+        this.buttonLabel = "RECEIVED MARIOS:";
+      }
+    }
+  }
 }

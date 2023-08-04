@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div mat-dialog-actions class="close-button-container">
+    <button mat-icon-button mat-dialog-close class="close-button">
+      <mat-icon class="close-icon">close</mat-icon>
+    </button>
+  </div>
+
+  <div class="content">
+
+    <div class="marios-type-and-name-and-sent-or-received">
+
+      <div class="name-and-sent-or-received">
+        <mat-icon class="person-icon">person</mat-icon>
+        <p class="sent-or-received">{{data.sentOrReceived}}</p>
+        <span class="space-between-sent-or-received-and-name"></span>
+        <p class="name">{{data.name}}</p>
+      </div>
+
+      <div class="marios-type">
+        <mat-icon class="star-icon" color="blue">star</mat-icon>
+        <p class="type-text">{{data.type}}</p>
+      </div>
+
+    </div>
+
+
+
+    <div class="marios-title">
+      <p style="text-align: start">{{data.title}}</p>
+    </div>
+
+    <div class="marios-comment">
+      <p class="marios-comment-text">
+        {{data.comment}}
+      </p>
+    </div>
+
+  </div>
+</div>
