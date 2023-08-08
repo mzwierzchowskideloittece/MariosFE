@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { MariosService } from "../../services/marios-service/marios.service";
 import {Marios} from "../../interfaces/marios-interface/marios";
 
@@ -7,7 +7,7 @@ import {Marios} from "../../interfaces/marios-interface/marios";
   templateUrl: './home-site.component.html',
   styleUrls: ['./home-site.component.scss']
 })
-export class HomeSiteComponent {
+export class HomeSiteComponent implements OnInit {
 
   public mariosList: Marios[] = [];
 
@@ -19,9 +19,8 @@ export class HomeSiteComponent {
     this.mariosService.getLatestMarios().subscribe( sentMarios => {
 
       if (sentMarios != undefined) {
-        this.mariosList = sentMarios as Marios[];
+        this.mariosList = sentMarios;
       }
-      console.log(this.mariosList);
     });
 
   }

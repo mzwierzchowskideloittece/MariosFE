@@ -19,14 +19,26 @@ export class MariosGridComponent {
 
 
   popUpMarios(tile: Marios) {
-    this.dialog.open(PopUpMariosComponent,{
-      data: {
-        sentOrReceived: tile.sentOrReceived,
-        name: tile.firstAndLastNameOfSender,
-        type: tile.type,
-        title: tile.title,
-        comment: tile.comment
-      }});
+    if(tile.sentOrReceived == "received"){
+      this.dialog.open(PopUpMariosComponent,{
+        data: {
+          sentOrReceived: tile.sentOrReceived,
+          name: [tile.firstAndLastNameOfSender],
+          type: tile.type,
+          title: tile.title,
+          comment: tile.comment
+        }});
+    } else {
+      this.dialog.open(PopUpMariosComponent,{
+        data: {
+          sentOrReceived: tile.sentOrReceived,
+          name: [...tile.firstAndLastNamesOfReceivers],
+          type: tile.type,
+          title: tile.title,
+          comment: tile.comment
+        }});
+    }
+
   }
 
 }

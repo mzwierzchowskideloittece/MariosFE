@@ -1,7 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {MariosService} from "../../services/marios-service/marios.service";
-import {Subject} from "rxjs";
 import {Marios} from "../../interfaces/marios-interface/marios";
 
 
@@ -10,7 +9,7 @@ import {Marios} from "../../interfaces/marios-interface/marios";
   templateUrl: './display-marios.component.html',
   styleUrls: ['./display-marios.component.scss']
 })
-export class DisplayMariosComponent {
+export class DisplayMariosComponent implements OnInit {
 
   public href: string = "";
 
@@ -25,22 +24,20 @@ export class DisplayMariosComponent {
 
     if(this.href == "/sent") {
       this.label = "SENT MARIOS:";
-      this.mariosService.getSentMarios().subscribe( sentMarios => {
+      this.mariosService.getSentMarios().subscribe( (sentMarios: Marios[]) => {
 
         if (sentMarios != undefined) {
-          this.mariosList = sentMarios as Marios[];
+          this.mariosList = sentMarios;
         }
-        console.log(this.mariosList);
       });
     } else {
       if(this.href == "/received") {
         this.label = "RECEIVED MARIOS:";
-        this.mariosService.getReceivedMarios().subscribe( sentMarios => {
+        this.mariosService.getReceivedMarios().subscribe( (receivedMarios: Marios[]) => {
 
-          if (sentMarios != undefined) {
-            this.mariosList = sentMarios as Marios[];
+          if (receivedMarios != undefined) {
+            this.mariosList = receivedMarios;
           }
-          console.log(this.mariosList);
         });
 
       }

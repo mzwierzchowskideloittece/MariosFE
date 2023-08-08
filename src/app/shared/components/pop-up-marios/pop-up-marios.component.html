@@ -15,12 +15,12 @@
         <p class="sent-or-received" *ngIf="data.sentOrReceived == 'sent'">To:</p>
         <p class="sent-or-received" *ngIf="data.sentOrReceived == 'received'">From:</p>
         <span class="space-between-sent-or-received-and-name"></span>
-        <p class="name">{{data.name}}</p>
+        <p *ngFor="let name of data.name">{{name}}</p>
       </div>
 
       <div class="marios-type">
         <mat-icon class="star-icon" color="blue">star</mat-icon>
-        <p class="type-text">{{data.type}}</p>
+        <p class="type-text">{{data.type.type}}</p>
       </div>
 
     </div>

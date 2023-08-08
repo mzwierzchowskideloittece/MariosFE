@@ -8,6 +8,6 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 })
 export class PopUpMariosComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {sentOrReceived: string, name: string, type: string, title: string, comment: string}) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {sentOrReceived: string, name: string[], type: { externalId: string, type: string}, title: string, comment: string}) {}
 
 }

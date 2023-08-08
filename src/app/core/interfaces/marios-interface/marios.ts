@@ -4,7 +4,13 @@ export interface Marios {
 
   sentOrReceived: string,
 
-  type: string,
+  type: {
+
+    externalId: string,
+
+    type: string
+
+  },
 
   title: string,
 
