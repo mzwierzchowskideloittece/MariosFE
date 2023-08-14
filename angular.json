@@ -2,7 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -100,6 +104,51 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "Mariosy_FE:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Mariosy_FE:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "Mariosy_FE:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "Mariosy_FE:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "Mariosy_FE:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Mariosy_FE:serve:production"
+            }
           }
         }
       }

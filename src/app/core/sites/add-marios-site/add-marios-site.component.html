@@ -2,23 +2,23 @@
 
   <div class="content">
 
-    <button class="add-marios-button-component" mat-raised-button [routerLink]="'/'">
-      <div class="add-marios-button-content">
-        <mat-icon class="add-marios-icon">navigate_before</mat-icon>
-        <p class="add-marios-button-text">BACK</p>
+    <button class="back-button-component" mat-raised-button [routerLink]="'/'">
+      <div class="back-button-content">
+        <mat-icon class="back-icon">navigate_before</mat-icon>
+        <p class="back-button-text">BACK</p>
       </div>
     </button>
 
     <div class="form-container" >
 
-        <form class="form" [formGroup] = "formData" (ngSubmit)="onClickSubmit(formData.value)">
+        <form class="form" [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
           <div class="receivers">
 
             <mat-icon class="person-icon">person</mat-icon>
 
             <mat-form-field class="chip-list">
               <mat-label>Receivers</mat-label>
-              <mat-chip-grid #chipGrid aria-label="Selected receivers">
+              <mat-chip-grid #chipGrid aria-label="Selected receivers" formControlName="receivers">
                 <mat-chip-row *ngFor="let person of selectedPeople" (removed)="remove(person)">
                   {{person.firstAndLastName}}
                   <button matChipRemove [attr.aria-label]="'remove ' + person">
@@ -34,6 +34,7 @@
                   {{person.firstAndLastName}}
                 </mat-option>
               </mat-autocomplete>
+              <mat-error>Receivers are required</mat-error>
             </mat-form-field>
           </div>
 
@@ -41,12 +42,13 @@
 
 
           <p>Select category:</p>
-          <mat-chip-listbox aria-label="Marios type selection" class="marios-type-chips">
+          <mat-chip-listbox aria-label="Marios type selection" class="marios-type-chips" formControlName="type">
             <mat-chip-option *ngFor="let mariosType of mariosTypes" (click)="selectedMariosType = mariosType.externalId">
               <mat-icon class="marios-type-icon">star</mat-icon>
               {{mariosType.type}}
             </mat-chip-option>
           </mat-chip-listbox>
+          <mat-error *ngIf="selectedMariosType != '' && !formData.value.type">Category is required</mat-error>
 
           <span class="yellow-line"></span>
 
@@ -55,6 +57,7 @@
           <mat-form-field class="title-form-field" appearance="outline">
 
             <input matInput placeholder="Enter marios title" formControlName="title">
+            <mat-error>Title is required</mat-error>
           </mat-form-field>
 
           <span class="yellow-line"></span>
@@ -64,6 +67,7 @@
           <mat-form-field class="comment-form-field" appearance="outline">
             <textarea matInput #input maxlength="255" formControlName="comment"></textarea>
             <mat-hint align="end">{{input.value.length}}/255</mat-hint>
+            <mat-error>Comment is required</mat-error>
           </mat-form-field>
 
           <div class="send-button-container">

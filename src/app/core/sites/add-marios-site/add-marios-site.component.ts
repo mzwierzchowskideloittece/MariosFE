@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import {FormControl, FormGroup} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import { map, Observable, startWith } from "rxjs";
 import { MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 import { MariosType } from "../../interfaces/marios-type-interface/marios-type";
@@ -47,11 +47,26 @@ export class AddMariosSiteComponent implements OnInit {
     });
 
 
-    this.mariosService.getUsers().subscribe( Users => {
+    this.mariosService.getUsers().subscribe( users => {
 
-      if (Users != undefined) {
-        this.allPeople = Users;
-        this.notSelectedPeople = Users;
+      if (users != undefined) {
+
+        for(let user of users) {
+
+          if(user.externalId == this.mariosService.id)
+          {
+            const userIndex = users.indexOf(user);
+
+            if (userIndex >= 0) {
+              users.splice(userIndex, 1);
+              break
+            }
+          }
+
+        }
+
+        this.allPeople = users;
+        this.notSelectedPeople = users;
         this.filteredPeople = this.personCtrl.valueChanges.pipe(
           startWith(null),
           map((person: string | null) => (person ? this._filter(person) : this.notSelectedPeople.slice())),
@@ -60,13 +75,24 @@ export class AddMariosSiteComponent implements OnInit {
     });
 
     this.formData = new FormGroup({
-      title: new FormControl(),
-      comment: new FormControl()
+      receivers: new FormControl(null, [Validators.required]),
+      type: new FormControl(null, [Validators.required]),
+      title: new FormControl(null, [Validators.required]),
+      comment: new FormControl(null, [Validators.required])
     });
 
   }
 
+  requiredTypeValidator(selectedMariosType: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const notEmpty = !(selectedMariosType != null && selectedMariosType != "");
+      return notEmpty ? {requiredType: {value: control.value}} : null;
+    };
+  }
+
+
   onClickSubmit(data: any) {
+    if(this.formData.invalid) return;
     this.mariosService.addMarios({
       typeExternalId: this.selectedMariosType,
       title: data.title,

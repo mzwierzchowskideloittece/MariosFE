@@ -1,5 +1,7 @@
 export interface OutputMarios {
 
+
+
   typeExternalId: string,
 
   title: string,
@@ -8,6 +10,6 @@ export interface OutputMarios {
 
   fromExternalId: string,
 
-  toExternalIds: Array<string>,
+  toExternalIds: Array<string>
 
 }
