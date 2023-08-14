@@ -20,7 +20,7 @@
               <mat-label>Receivers</mat-label>
               <mat-chip-grid #chipGrid aria-label="Selected receivers">
                 <mat-chip-row *ngFor="let person of selectedPeople" (removed)="remove(person)">
-                  {{person.firstAndLastName}}
+                  {{person.userName}}
                   <button matChipRemove [attr.aria-label]="'remove ' + person">
                     <mat-icon>cancel</mat-icon>
                   </button>
@@ -31,7 +31,7 @@
                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"/>
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
                 <mat-option *ngFor="let person of filteredPeople | async" [value]="person">
-                  {{person.firstAndLastName}}
+                  {{person.userName}}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>

@@ -16,9 +16,9 @@ export interface Marios {
 
   comment: string,
 
-  firstAndLastNameOfSender: string,
+  userNameOfSender: string,
 
-  firstAndLastNamesOfReceivers: Set<string>,
+  userNamesOfReceivers: Set<string>,
 
   creationDate: Date
 

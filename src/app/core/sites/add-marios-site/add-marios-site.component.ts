@@ -71,8 +71,7 @@ export class AddMariosSiteComponent implements OnInit {
       typeExternalId: this.selectedMariosType,
       title: data.title,
       comment: data.comment,
-      fromExternalId: this.mariosService.id,
-      toExternalIds: [...this.selectedPeople.map<string>(person => person.externalId)]
+      userNamesOfReceivers: [...this.selectedPeople.map<string>(person => person.userName)]
     });
   }
 
@@ -106,7 +105,7 @@ export class AddMariosSiteComponent implements OnInit {
   private _filter(value: string): User[] {
     const filterValue = String(value).toLowerCase();
 
-    return this.notSelectedPeople.filter(person => String(person.firstAndLastName).toLowerCase().includes(filterValue));
+    return this.notSelectedPeople.filter(person => String(person.userName).toLowerCase().includes(filterValue));
   }
 
 }

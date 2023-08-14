@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PopUpMariosComponent } from './shared/components/pop-up-marios/pop-up-marios.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { HttpClientModule } from "@angular/common/http";
+import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
+import { initializeKeycloak } from "./utility/app.init";
 
 @NgModule({
   declarations: [
@@ -52,9 +54,17 @@ import { HttpClientModule } from "@angular/common/http";
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    KeycloakAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

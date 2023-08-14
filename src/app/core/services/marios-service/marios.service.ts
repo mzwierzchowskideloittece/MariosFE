@@ -10,16 +10,14 @@ import {OutputMarios} from "../../interfaces/output-marios-interface/output-mari
 })
 export class MariosService {
 
-  public id: string = 'd87090c2-f5c3-4773-9256-509d481e160a';
-
-  private baseUsersURL: string = "/api/v1/users/";
+  private baseUsersURL: string = "/api/v1/users";
   constructor(private http: HttpClient) { }
 
 
 
   getSentMarios() {
 
-    const url:string = this.baseUsersURL + this.id + "/sent";
+    const url:string = this.baseUsersURL + "/sent";
 
     return this.http.get<Marios[]>(url);
 
@@ -27,7 +25,7 @@ export class MariosService {
 
   getReceivedMarios() {
 
-    const url:string = this.baseUsersURL + this.id + "/received";
+    const url:string = this.baseUsersURL + "/received";
 
     return this.http.get<Marios[]>(url);
 
@@ -35,7 +33,7 @@ export class MariosService {
 
   getLatestMarios() {
 
-    const url:string = this.baseUsersURL + this.id + "/latest";
+    const url:string = this.baseUsersURL + "/latest";
 
     return this.http.get<Marios[]>(url);
   }

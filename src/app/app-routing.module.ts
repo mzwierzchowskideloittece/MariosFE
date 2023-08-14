@@ -3,12 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeSiteComponent} from "./core/sites/home-site/home-site.component";
 import {AddMariosSiteComponent} from "./core/sites/add-marios-site/add-marios-site.component";
 import {DisplayMariosComponent} from "./core/sites/display-marios/display-marios.component";
+import {AuthGuard} from "./utility/app.guard";
 
 const routes: Routes = [
-  { path: '', component: HomeSiteComponent },
-  { path: 'add', component: AddMariosSiteComponent},
-  { path: 'received', component: DisplayMariosComponent},
-  { path: 'sent', component: DisplayMariosComponent}
+  { path: '', component: HomeSiteComponent,
+    canActivate: [AuthGuard]},
+  { path: 'add', component: AddMariosSiteComponent,
+    canActivate: [AuthGuard]},
+  { path: 'received', component: DisplayMariosComponent,
+    canActivate: [AuthGuard]},
+  { path: 'sent', component: DisplayMariosComponent,
+    canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -6,8 +6,6 @@ export interface OutputMarios {
 
   comment: string,
 
-  fromExternalId: string,
-
-  toExternalIds: Array<string>,
+  userNamesOfReceivers: Array<string>,
 
 }
