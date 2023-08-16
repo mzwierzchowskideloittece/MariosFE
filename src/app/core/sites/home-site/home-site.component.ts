@@ -11,7 +11,9 @@ export class HomeSiteComponent implements OnInit {
 
   public mariosList: Marios[] = [];
 
-  constructor(private mariosService: MariosService) {}
+  constructor(private mariosService: MariosService) {
+
+  }
 
 
   ngOnInit() {
