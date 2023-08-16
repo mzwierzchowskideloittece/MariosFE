@@ -1,15 +1,14 @@
 export interface OutputMarios {
 
 
-
   typeExternalId: string,
 
   title: string,
 
   comment: string,
 
-  fromExternalId: string,
+  externalIdOfSender: string,
 
-  toExternalIds: Array<string>
+  externalIdsOfReceivers: Array<string>
 
 }

@@ -23,7 +23,7 @@ export class MariosGridComponent {
       this.dialog.open(PopUpMariosComponent,{
         data: {
           sentOrReceived: tile.sentOrReceived,
-          name: [tile.firstAndLastNameOfSender],
+          name: [tile.userNameOfSender],
           type: tile.type,
           title: tile.title,
           comment: tile.comment
@@ -32,7 +32,7 @@ export class MariosGridComponent {
       this.dialog.open(PopUpMariosComponent,{
         data: {
           sentOrReceived: tile.sentOrReceived,
-          name: [...tile.firstAndLastNamesOfReceivers],
+          name: [...tile.userNamesOfReceivers],
           type: tile.type,
           title: tile.title,
           comment: tile.comment

@@ -17,9 +17,9 @@
         <p class="sent-or-received" *ngIf="tile.sentOrReceived == 'sent'">To:</p>
         <p class="sent-or-received" *ngIf="tile.sentOrReceived == 'received'">From:</p>
         <span class="space-between-sent-or-received-and-name"></span>
-        <p class="name" *ngIf="tile.sentOrReceived == 'received'">{{tile.firstAndLastNameOfSender}}</p>
+        <p class="name" *ngIf="tile.sentOrReceived == 'received'">{{tile.userNameOfSender}}</p>
         <div class="name" *ngIf="tile.sentOrReceived == 'sent'">
-          <p *ngFor="let receiver of tile.firstAndLastNamesOfReceivers">{{receiver}}</p>
+          <p *ngFor="let receiver of tile.userNamesOfReceivers">{{receiver}}</p>
         </div>
 
       </div>
