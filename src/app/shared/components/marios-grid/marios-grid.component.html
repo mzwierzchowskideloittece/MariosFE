@@ -36,8 +36,9 @@
 
       <div class="marios-comment">
         <p class="marios-comment-text">
-          {{tile.comment}}...
-          <span style="color: black; font-weight: bold">See more</span>
+          {{tile.comment.slice(0,20)}}
+          <span *ngIf="tile.comment.length>20" class="marios-comment-text">...</span>
+          <span *ngIf="tile.comment.length>20" style="color: black; font-weight: bold">See more</span>
         </p>
       </div>
 

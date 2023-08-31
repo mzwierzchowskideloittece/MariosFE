@@ -1,11 +1,21 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 import { map, Observable, startWith } from "rxjs";
 import { MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 import { MariosType } from "../../interfaces/marios-type-interface/marios-type";
 import { MariosService } from "../../services/marios-service/marios.service";
 import { User } from "../../interfaces/user-interface/user";
+import {Router} from "@angular/router";
+import {Marios} from "../../interfaces/marios-interface/marios";
 
 @Component({
   selector: 'app-add-marios-site',
@@ -26,15 +36,18 @@ export class AddMariosSiteComponent implements OnInit {
   selectedMariosType: string = "";
 
   formData: FormGroup = new FormGroup<any>({});
+  disableSendButton: boolean = false;
 
   title: string = "";
   comment: string = "";
+
+  errorSendingMarios: boolean = false;
 
 
   @ViewChild('personInput') personInput: ElementRef<HTMLInputElement> = {} as ElementRef;
 
 
-  constructor(private mariosService: MariosService) {}
+  constructor(private mariosService: MariosService, private router: Router) {}
 
   ngOnInit() {
 
@@ -65,11 +78,11 @@ export class AddMariosSiteComponent implements OnInit {
 
         }
 
-        this.allPeople = users;
-        this.notSelectedPeople = users;
+        this.allPeople = [...users];
+        this.notSelectedPeople = [...users];
         this.filteredPeople = this.personCtrl.valueChanges.pipe(
           startWith(null),
-          map((person: string | null) => (person ? this._filter(person) : this.notSelectedPeople.slice())),
+          map((person: string | null) => (person ? this._filter(person) : this.notSelectedPeople.slice()))
         );
       }
     });
@@ -83,23 +96,25 @@ export class AddMariosSiteComponent implements OnInit {
 
   }
 
-  requiredTypeValidator(selectedMariosType: string): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const notEmpty = !(selectedMariosType != null && selectedMariosType != "");
-      return notEmpty ? {requiredType: {value: control.value}} : null;
-    };
-  }
 
 
-  onClickSubmit(data: any) {
+  async onClickSubmit(data: any) {
+    this.errorSendingMarios = false;
     if(this.formData.invalid) return;
-    this.mariosService.addMarios({
+    this.disableSendButton = true;
+    let subscribtion = this.mariosService.addMarios({
       typeExternalId: this.selectedMariosType,
       title: data.title,
       comment: data.comment,
       externalIdOfSender: this.mariosService.id,
       externalIdsOfReceivers: [...this.selectedPeople.map<string>(person => person.externalId)]
-    });
+    }).subscribe((data: Marios) => {this.router.navigate([""]);});
+
+    await this.delay(5000);
+
+    subscribtion.unsubscribe();
+    this.disableSendButton = false;
+    this.errorSendingMarios = true;
   }
 
   remove(user: User): void {
@@ -133,6 +148,10 @@ export class AddMariosSiteComponent implements OnInit {
     const filterValue = String(value).toLowerCase();
 
     return this.notSelectedPeople.filter(person => String(person.userName).toLowerCase().includes(filterValue));
+  }
+
+  private delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
 }

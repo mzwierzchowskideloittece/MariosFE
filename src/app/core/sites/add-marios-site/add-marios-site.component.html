@@ -71,10 +71,11 @@
           </mat-form-field>
 
           <div class="send-button-container">
-            <button type="submit" mat-raised-button class="send-button-component">
+            <p *ngIf="errorSendingMarios" class="cant-send-message">Can't send the Marios</p>
+            <span class="space-between-error-and-send-button"></span>
+            <button type="submit" [disabled]="disableSendButton" mat-raised-button class="send-button-component">
               <p class="send-button-text">SEND</p>
             </button>
-
           </div>
 
         </form>

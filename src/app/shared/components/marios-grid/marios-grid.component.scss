@@ -132,7 +132,13 @@ p {
   color: grey;
   font-size: 0.9vw;
 
-  margin: 0.7vw;
+  margin: 1vw;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.marios-comment-text {
+  word-wrap: break-word;
 }
 
 .mdc-button--raised {

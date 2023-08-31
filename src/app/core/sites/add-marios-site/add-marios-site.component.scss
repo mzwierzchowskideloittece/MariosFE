@@ -97,7 +97,7 @@
 }
 
 .marios-type-icon {
-
+ color: green;
 }
 
 
@@ -132,6 +132,13 @@
 
 .send-button-text {
   margin: 15% 0 0;
+}
+
+.cant-send-message {
+  color: red;
+}
+.space-between-error-and-send-button {
+  width: 1rem;
 }
 
 
